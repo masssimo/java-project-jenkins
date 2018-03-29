@@ -22,6 +22,7 @@ pipeline {
          steps {
             sh 'cd dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/'
          }
+      }
    }
 
    post {
@@ -29,5 +30,5 @@ pipeline {
          archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
       }
    }
- }
 }
+
