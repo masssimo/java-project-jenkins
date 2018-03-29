@@ -1,5 +1,7 @@
 pipeline {
-   agent any
+   agent {
+      label 'master'
+   }
 
  
 
@@ -16,6 +18,10 @@ pipeline {
             sh 'ant -f build.xml -v'
          }
       }
+      stage('deploy') {
+         steps {
+            sh 'cd dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/'
+         }
    }
 
    post {
